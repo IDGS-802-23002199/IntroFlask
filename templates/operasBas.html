@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <form action="/operasBas" method="post">
+        <div class"mb-3">
+            <label for=""n1"" class="form-label">Número 1:</label>
+            <input type="text" class="form-control" id="n1" name="n1">
+        </div>
+        <div class="mb-3">
+            <label for=""n2"" class="form-label">Número 2:</label>
+            <input type="text" class="form-control" id="n2" name="n2">
+        </div>
+        <label class="form-label">Seleccione la operación: </label>
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" name="operacion" id="operacion">
+                <option value="suma" selected>Suma</option>
+                <option value="resta">Resta</option>
+                <option value="multiplicacion">Multiplicación</option>
+                <option value="division">División</option>
+            </select>
+        <button type="submit" class="btn btn-primary">Calcular</button>
+    </form>
+
+    <h1>
+        El resultado es: {{res}}
+    </h1>
+{% endblock %}
