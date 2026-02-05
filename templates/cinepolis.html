@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cine Unicentro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css') }}">
+</head>
+<body>
+    <h2>Compra de Boletas</h2> -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% import "_macros.html" as macros %}
+    <link rel="stylesheet" href="../static/css/style.css">
+    <form action="/cinepolis" method="post" novalidate>
+
+    {{ form.csrf_token }}
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+    
+        <div class="contenedor">
+
+            <fieldset class="entrada">
+                <legend>Entradas</legend>
+
+                <!-- <label>Nombre:</label><br>
+                <input type="text" name="nombre" required><br><br> -->
+                <div class="mb-3">
+                    {{macros.campoNuevo(form.nombre,class="form-control")}}
+                </div>
+                
+
+                <div class="mb-3">
+                    {{ macros.campoNuevo(form.compradores, class="form-control") }}
+                </div>
+                <!-- <label>Cantidad de boletas (máx 7):</label><br>
+                <input type="number" name="cantidad" min="1" max="7" required><br><br> -->
+                <div class="mb-3">
+                    {{macros.campoNuevo(form.cantidad,class="form-control")}}
+                </div>
+                <div class="mb-3">
+                    {{macros.campoNuevo(form.cineco,class="form-control")}}
+                </div>
+                <!-- <label>¿Paga con tarjeta CINECO?</label><br>
+                <select name="cineco">
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                </select> -->
+            </fieldset>
+
+            <fieldset class="salida">
+                <legend>Salidas</legend>
+
+                <label><strong>Total a pagar:</strong></label><br>
+                <input type="text" value="{{ resultado }}" readonly>
+            </fieldset>
+
+        </div>
+        <div class="salida">
+            <fieldset class="acciones">
+                <legend>Acciones</legend>
+                <div class="boton">
+                <button type="submit">Procesar</button>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+
+{% endblock %}
