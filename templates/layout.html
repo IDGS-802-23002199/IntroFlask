@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+
     <title>Document</title>
 </head>
 <body>
@@ -39,8 +40,20 @@
 </div>
 </nav>
 <div class="container mt-5 pt-4">
-    {%block content %}
-    {%endblock%}
+    {% with messages=get_flashed_messages() %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class=""alert alert-success">
+                {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
 </div>
 
 </body>

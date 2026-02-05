@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% import "_macros.html" as macros %}
+
+<form action="/distancia" method="post">
+
+
+    {{ macros.datos("x1","Ingrese el primer número", "number")}}
+    {{ macros.datos("x2","Ingrese el segundo número", "number")}}
+    {{ macros.datos("y1","Ingrese el tercer número", "number")}}
+    {{ macros.datos("y2","Ingrese el cuarto número", "number")}}
+
+
+
+<button type="submit" class="btn btn-primary">Calcular</button>
+
+</form>
+
+    <h1>
+        La distancia entre ({{ x1 }}, {{ y1 }}) y ({{ x2 }}, {{ y2 }}) es {{ '%.2f' % res }}
+    </h1>
+
+{% endblock %}
+
+
+
+        <!-- {{ form.csrf_token }}
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}"> -->
